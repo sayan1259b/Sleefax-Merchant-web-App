@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Meta Section For SEO -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>New Orders </title>
+    <!-- Linking Bootstrap and CSS -->
+    <link rel="icon" href="Img/logo0.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="new_orders.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light fixed-top pb-0" style="background-color: white;">
+
+    <!-- Navbar Brand -->
+    <a href="new_orders.html" class="navbar-brand">
+        <div class="row">
+            <img src="Img/logo0.jpeg" alt="Sleefax" class="logo mx-2 p-1">
+            <b class="mt-2 text-dark">SleefaxPartner</b>
+        </div>
+    </a>
+
+    <!-- Toggle Icon -->
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" style="color:#296178">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+	
+<label class="switch">
+  <input type="checkbox" checked>
+  <span class="slider round"></span>
+  <span class="absolute-no">NO</span>
+</label>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ml-auto mt-2">
+            <ul class="navbar-nav ml-auto"  id="navbarCollapse">
+                <!-- Shop Open-Close Toggle Button -->
+                <label class="switch mt-1">
+                  <input type="checkbox" id="toggleBtn" checked="checked">
+                  <div class="slider round">
+                    <span id="on" type="button" data-toggle="modal" data-target="#myModal" class="pr-3" style="font-weight:bold; font-size:medium;">Open</span>
+                    <span id="off" type="button" class="pl-4" style="font-weight:bold; font-size:medium">Closed</span>
+
+                    <!-- Modal-->
+                    <div id="myModal" role="dialog" aria-hidden="true" class="modal fade text-left">
+                      <div role="document" class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-body">
+                            <p class="px-4 pt-3 text-center"><span class="mb-2" style="font-weight: bold; color: #3F8FB0;">Are you sure you want to keep the shop closed ?</span> <br>Users will not be able to send new orders for printing during this time.</p>
+                          </div>
+                          <div class="modal-footer justify-content-center border-0 mb-3">
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary px-4">NO</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-blue px-4">YES</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </label>
+
+                <li class="nav-item ml-md-5">
+                  <a class="nav-link active mx-auto" href="new_orders.html">Home</a>
+                  <div class="mx-auto" id="smaller-border"></div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link mx-auto" href="order_history.html">Order History</a>
+                </li>
+                <li class="nav-item text-left">
+                  <div class="dropdown">
+                    <a class="dropbtn nav-link">Profile
+                      <i class="fa fa-caret-down"></i>
+                    </a>
+                    <div class="dropdown-content text-center">
+                      <a href="settings.html" class="nav-link mt-3">Settings</a>
+                      <a href="logout.html" class="nav-link">Logout</a>
+                    </div>
+                  </div> 
+                </li>
+            </ul> 
+        </div>
+    </div>
+</nav>
+
+<!-- Search Bar -->
+<div class="row justify-content-center" style="margin-top: 100px;">
+  <input type="text" class="px-2 text-sm" placeholder="search by order id" style="max-width: 180px;">
+  <button class="px-1" type="submit" id="search-btn" style="max-width: 50px; text-align: center;"><i class="fa fa-search"></i></button>
+</div>
+
+<!-- New Orders -->
+<div class="row mt-4 justify-content-center">
+    <div class="col-12 col-md-1"></div>
+    <div class="col-12 col-md-8 px-md-0">
+        <div class="row mx-2 px-3 pb-0" style="box-shadow: none; border-width: 1px; border-style: solid; border-right:none; border-left:none; border-top:none; border-color: #296178;">
+          <a href="new_orders.html" class="tab-heading active pb-2 mr-4">New Orders</a>
+          <a href="pending_for_pickup.html" class="tab-heading pb-2">Pending for Pickup</a>
+          <div class="navbar-nav ml-auto">
+            <a class="btn btn-refresh pb-1 d-none d-md-block" id="load1" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>">
+              <img src="Img/reload-icon.png" style="height:25px;">
+            </a>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-borderless mt-2 list1">
+            <tbody>
+              <tr>
+                <td class="pb-1">
+                  <h5 class="person-name ml-1 ml-md-5"><span class="customer-name">Rahul Sharma</span>(1)</h5>
+                  <div class="row ml-2 pl-3">
+                    <img src="Img/call-icon-1.png" class="ml-1 ml-md-4 contact-icon" href="#" style="width: 40px; height:40px;">
+                    <p class="mt-2 d-block ptr">
+                      <u class="contact-text" style="color:#0D506E; font-weight: bold;">Contact</u>
+                      <u class="contact-no d-none" style="color:#0D506E; font-weight: bold;">9876543210</u>
+                    </p>
+                  </div>
+                </td>
+                <td class="pb-1" style="vertical-align: middle;">
+                  <h5><span class="text-sm text-muted">ORDER #</span> 12351256</h5>
+                  <h6><span class="text-sm text-muted">File Size :</span> 100 kB </h6>
+                </td>
+                <td class="pb-1" style="vertical-align: middle; text-align: center;">
+                  <h5 class="mr-md-5"><span class="rupees-sym">₹</span> 32</h5>
+                  <h6 class="mr-md-4 text-muted">April, 7:03 PM</h6>
+                </td>
+                <td class="d-none">
+                  <span class="page-size">A5</span>
+                  <span class="orient">Portrait</span>
+                  <span class="color">b/w</span>
+                  <span class="copies">2</span>
+                  <span class="file-type">pdf</span>
+                  <span class="file-size">100 kB</span>
+                  <span class="pages">Custom: 1 - 5</span>
+                </td>
+                <td class="" style="vertical-align: middle;">
+                  <img class="ptr" src="Img/print-icon.png" style="height:45px; width:45px;">
+                </td>
+                <td class="" style="vertical-align: middle;">
+                  <img class="ptr" src="Img/cross-icon.png" style="height:45px; width:45px;">
+                </td>
+              </tr>
+              <tr>
+                <td class="pb-1">
+                  <h5 class="person-name ml-1 ml-md-5"><span class="customer-name">John Doe</span>(1)</h5>
+                  <div class="row ml-2 pl-3">
+                    <img src="Img/call-icon-1.png" class="ml-1 ml-md-4 contact-icon" href="#" style="width: 40px; height:40px;">
+                    <p class="mt-2 d-block ptr">
+                      <u class="contact-text" style="color:#0D506E; font-weight: bold;">Contact</u>
+                      <u class="contact-no d-none" style="color:#0D506E; font-weight: bold;">9876543210</u>
+                    </p>
+                  </div>
+                </td>
+                <td class="pb-1" style="vertical-align: middle;">
+                  <h5><span class="text-sm text-muted">ORDER #</span> 12351256</h5>
+                  <h6><span class="text-sm text-muted">File Size :</span> 100 kB </h6>
+                </td>
+                <td class="pb-1" style="vertical-align: middle; text-align: center;">
+                  <h5 class="mr-md-5"><span class="rupees-sym">₹</span> 32</h5>
+                  <h6 class="mr-md-4 text-muted">April, 7:03 PM</h6>
+                </td>
+                <td class="d-none">
+                  <span class="page-size">A4</span>
+                  <span class="orient">Portrait</span>
+                  <span class="color">color</span>
+                  <span class="copies">1</span>
+                  <span class="file-type">pdf</span>
+                  <span class="file-size">120 kB</span>
+                  <span class="pages">All Pages</span>
+                </td>
+                <td style="vertical-align: middle;">
+                  <img class="ptr" src="Img/print-icon.png" style="height:45px; width:45px;">
+                </td>
+                <td style="vertical-align: middle;">
+                  <img class="ptr" src="Img/cross-icon.png" style="height:45px; width:45px;">
+                </td>
+              </tr>
+              <tr>
+                <td class="pb-1">
+                  <h5 class="person-name ml-1 ml-md-5"><span class="customer-name">Lina Jose</span>(2)</h5>
+                  <div class="row ml-2 pl-3">
+                    <img src="Img/call-icon-1.png" class="ml-1 ml-md-4 contact-icon" href="#" style="width: 40px; height:40px;">
+                    <p class="mt-2 d-block ptr">
+                      <u class="contact-text" style="color:#0D506E; font-weight: bold;">Contact</u>
+                      <u class="contact-no d-none" style="color:#0D506E; font-weight: bold;">9876543210</u>
+                    </p>
+                  </div>
+                </td>
+                <td class="pb-1" style="vertical-align: middle;">
+                  <h5><span class="text-sm text-muted">ORDER #</span> 12351256</h5>
+                  <h6><span class="text-sm text-muted">File Size :</span> 100 kB </h6>
+                </td>
+                <td class="pb-1" style="vertical-align: middle; text-align: center;">
+                  <h5 class="mr-md-5"><span class="rupees-sym">₹</span> 32</h5>
+                  <h6 class="mr-md-4 text-muted">April, 7:03 PM</h6>
+                </td>
+                <td class="d-none">
+                  <span class="page-size"></span>
+                  <span class="orient"></span>
+                  <span class="color"></span>
+                  <span class="copies"></span>
+                  <span class="file-type"></span>
+                  <span class="file-size"></span>
+                  <span class="pages">Pages</span>
+                </td>
+                <td style="vertical-align: middle;">
+                  <img class="ptr" src="Img/multi-file-icon.png" style="height:45px; width:45px;">
+                </td>
+                <td style="vertical-align: middle;">
+                  <img class="ptr" src="Img/cross-icon.png" style="height:45px; width:45px;">
+                </td>
+              </tr>
+              <tr>
+                <td class="pb-1">
+                  <h5 class="person-name ml-1 ml-md-5"><span class="customer-name">Rosey Clark</span>(1)</h5>
+                  <div class="row ml-2 pl-3">
+                    <img src="Img/call-icon-1.png" class="ml-1 ml-md-4 contact-icon" href="#" style="width: 40px; height:40px;">
+                    <p class="mt-2 d-block ptr">
+                      <u class="contact-text" style="color:#0D506E; font-weight: bold;">Contact</u>
+                      <u class="contact-no d-none" style="color:#0D506E; font-weight: bold;">9876543210</u>
+                    </p>
+                  </div>
+                </td>
+                <td class="pb-1" style="vertical-align: middle;">
+                  <h5><span class="text-sm text-muted">ORDER #</span> 12351256</h5>
+                  <h6><span class="text-sm text-muted">File Size :</span> 100 kB </h6>
+                </td>
+                <td class="pb-1" style="vertical-align: middle; text-align: center;">
+                  <h5 class="mr-md-5"><span class="rupees-sym">₹</span> 32</h5>
+                  <h6 class="mr-md-4 text-muted">April, 7:03 PM</h6>
+                </td>
+                <td class="d-none">
+                  <span class="page-size">A4</span>
+                  <span class="orient">Landscape</span>
+                  <span class="color">color</span>
+                  <span class="copies">1</span>
+                  <span class="file-type">pdf</span>
+                  <span class="file-size">123 kB</span>
+                  <span class="pages">All Pages</span>
+                </td>
+                <td style="vertical-align: middle;">
+                  <img class="ptr" src="Img/print-icon.png" style="height:45px; width:45px;">
+                </td>
+                <td style="vertical-align: middle;">
+                  <img class="ptr" src="Img/cross-icon.png" style="height:45px; width:45px;">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  
+    <div class="col-md-1"></div>
+
+    <div class="col-11 col-md-2 pl-md-0">
+      <div class="order-details container mr-md-1 newel pb-5 mt-2">
+        <div class="title row justify-content-center pt-2 pb-2 mt-4 mx-1">Order Details</div>
+        <div class="row justify-content-center mt-4">
+          <h5><span id="customer">Customer Name</span></h5>
+        </div>
+        <div class="mt-3 text-center">
+          <p>Page Size: <span id="data1"></span></p>
+          <p>Orientation: <span id="data2"></span></p>
+          <p>Colour Type: <span id="data3"></span></p>
+          <p>Copies: <span id="data4"></span></p>
+          <p>File type: <span id="data5"></span></p>
+          <p>File size: <span id="data6"></span></p>
+          <p><span id="data7">Pages</span></p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer pt-4 mt-5">
+    <div class="container-fluid text-center text-md-left pt-2 pb-5">
+      <div class="row px-2 px-lg-5">
+
+        <!-- Contact Details -->
+        <div class="col-12 col-md-3 mt-md-0 mt-3">
+          <h3 class="mb-3 ml-2" style="font-weight: bold; color: #DFDFDF;">Sleefax</h3>
+          <div class="row mt-4">
+            <div class="col-12 col-md-2 mt-2">
+              <img src="Img/loc-icon.png" height="30px" width="30px">
+            </div>
+            <div class="col-12 col-md-10 text-light" style="font-size: small;">
+              5th floor, MIT TBi,<br>
+              Paud Rd., Kothrud,<br>
+              Pune-411038<br>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12 col-md-2 mt-1" >
+              <img src="Img/call-icon.png" height="25px" width="25px">
+            </div>
+            <div class="col-12 col-md-10 text-light" style="font-size: small;">
+              +91 1234567890<br>
+              +91 1234567890
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-12 col-md-2 mt-1" >
+              <img src="Img/mail-icon.png" height="25px" width="25px">
+            </div>
+            <div class="col-12 col-md-10 mt-1 text-light" style="font-size: small;">
+              incsleefax@gmail.com
+            </div>
+          </div>
+        </div>
+    
+      <!-- Company Section -->
+      <div class="col-12 col-md-2 mb-md-0 mb-3 mt-5 mt-md-3">
+          <h5 style="color: #DFDFDF; font-weight: bold;">Company</h5>
+          <ul class="list-unstyled text-light">
+            <li class="mt-3">
+              <a href="about_us.html">About Us</a>
+            </li>
+            <li class="mt-1">
+              <a href="contact_us.html">Contact Us</a>
+            </li>
+            <li class="mt-1">
+              <a href="#!">Help</a>
+            </li>
+          </ul>
+      </div>
+
+      <!-- Policy Section -->
+        <div class="col-12 col-md-2 mb-3 mt-3">
+          <h5 style="color: #DFDFDF; font-weight: bold;">Policy</h5>
+          <ul class="list-unstyled text-light">
+            <li class="mt-3">
+              <a href="#!">Terms</a>
+            </li>
+            <li class="mt-1">
+              <a href="#!">Privacy Policy</a>
+            </li>
+          </ul>
+      </div>
+
+      <!-- Vertical Line -->
+        <div class="col-12 col-md-1">
+          <div class="mt-3 d-none d-md-block" id="vl"></div>
+        </div>
+
+        <!-- Get our App -->
+        <div class="col-12 col-md-4 mb-md-0 mb-3 mt-3 text-center">
+          <h5 style="color:#DFDFDF; font-weight: bold;">  Get our app</h5>
+          <div class="text-center">
+            <div class="row mt-3 justify-content-center">
+                  <img class="m-2 mb-1" src="Img/google-play.png" height="44px" width="125px">
+                  <img class="m-2 mt-1" src="Img/apple-store.png" height="43px" width="125px">
+            </div>
+          </div>
+
+          <!-- Horizontal Line -->
+          <div class="row">
+            <div class ="mt-4 mx-5 mx-md-3" id="rl"></div>
+          </div>
+       
+          <!-- Social Connect -->
+          <h5 class="mt-4" style="color:#DFDFDF; font-weight: bold;">Social</h5>
+          <ul class="list-unstyled">
+            <li class="mt-4 ml-3 social-connect">
+              <img class="mr-3" src="Img/google-icon.png">
+              <img class="mr-3" src="Img/fb-icon.png">
+              <img class="mr-3" src="Img/insta-icon.png">
+              <img class="mr-3" src="Img/linkedin-icon.png">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-1">
+    Copyright &copy;
+  </div>
+
+</footer>
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="new_orders.js"></script>
+
+</body>
+</html>
